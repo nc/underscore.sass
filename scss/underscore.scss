@@ -1,0 +1,60 @@
+$debug: false;
+
+@import "bourbon/bourbon";
+
+$grid-columns: 16; 
+$max-width: 100%;
+$visual-grid: $debug;
+$visual-grid-color: red;
+@import "neat/neat";
+
+$special-ratio: 1.5;
+
+@function _($step) {
+  @return modular-scale(1rem, $step, $special-ratio);
+}
+
+body {
+  @include outer-container;
+  @include pad;
+}
+
+@import "_scale-html-font-size";
+
+html {
+  font-family: "Helvetica Neue", "Helvetica", arial, sans-serif;
+
+  @include scale-html-font-size;
+}
+
+h1 {
+  font-size: _(3);
+}
+
+h2 {
+  font-size: _(2);
+}
+
+h3 {
+  font-size: _(1);
+}
+
+p {
+  font-size: _(0);
+}
+
+// high level grid
+
+%grid.padded {
+  @include span-columns(12);
+  @include shift(2);
+  
+  @include media(max-width 500px) {
+    @include span-columns(16);
+    @include shift(0);
+  }
+}
+
+article {
+  @extend %grid.padded;
+}

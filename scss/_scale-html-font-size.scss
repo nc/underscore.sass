@@ -1,0 +1,18 @@
+@mixin scale-html-font-size {
+  $smallest-viewport-width: 480px;
+  $viewport-step: 240px;
+  $steps: 6;
+  $scale-font-size-by: 10%;
+  $base-font-size: 100%;
+
+  @for $step-i from 0 through $steps {
+    $viewport-width: $smallest-viewport-width + $step-i*$viewport-step;
+  
+    // linear
+    $font-size: $base-font-size + $step-i * $scale-font-size-by;
+
+    @include media(min-width $viewport-width) {
+      font-size: $font-size;
+    }
+  }
+}
