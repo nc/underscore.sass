@@ -26,35 +26,3 @@ html {
 
   @include scale-html-font-size;
 }
-
-h1 {
-  font-size: _(3);
-}
-
-h2 {
-  font-size: _(2);
-}
-
-h3 {
-  font-size: _(1);
-}
-
-p {
-  font-size: _(0);
-}
-
-// high level grid
-
-%grid.padded {
-  @include span-columns(12);
-  @include shift(2);
-  
-  @include media(max-width 500px) {
-    @include span-columns(16);
-    @include shift(0);
-  }
-}
-
-article {
-  @extend %grid.padded;
-}
